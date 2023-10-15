@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="shortcut icon" href="./img/" type="image/x-icon">
+    <title>Avlon Bot</title>
+</head>
+
+<body class="bg-dark">
+
+    <!-- Navbar -->
+   
+    <div class="h-screen relative border-t-4 border-amber-600" >
+        
+        <div class="navbar navbar-expand-md navbar-dark" style="background: linear-gradient(to bottom, rgba(255,0,0,0.1), rgba(255, 0, 0, 0.1))">
+        <div class="container">
+            <img class="img-fluid w-10 rounded-circle neon" src="./img/download (3).jpg" alt="">
+
+            <a href="index.html" class="navbar-brand text-danger">Avlon <span style="color: white;">™</span></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu"><span
+                    class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="mainmenu">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a href="#Features" class="nav-link">Features</a></li>
+                    <li class="nav-item"><a href="#Statics" class="nav-link">Statics</a></li>
+                    <li class="nav-item"><a href="./pages/commands.html" class="nav-link">Commands</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="linksdrop" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Links</a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="linksdrop">
+                            <li><a class="dropdown-item text-muted" href="">Invite</a></li>
+                            <li><a class="dropdown-item text-muted" href="">Github</a></li>
+                            <li><a class="dropdown-item text-muted" href="">Support Server</a></li>
+                        </ul>
+                    </li>
+                </ul>
+        
+                <li class="nav-item dropdown" id="profile" style="display: none;">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="avatar" src="" alt="Avatar" style="width: 45px; height: 45px; border-radius: 50%;">
+                    </a>
+                    <ul class="dropdown-menu bg-dark" aria-labelledby="profileDropdown">
+                        <!--<li><a class="dropdown-item text-muted" href="./pages/dashboard.html">Dashboard</a></li>-->
+                        <li><a class="dropdown-item text-muted" href="/profile">Profile</a></li>
+                        <li><a class="dropdown-item text-muted" href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+
+           
+            <a href="/login" class="btn btn-outline-danger" id="loginButton">Login</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Info -->
+    
+
+    <section class="bg-dark text-light text-center py-5" style="position: relative; z-index: 1; background: linear-gradient(to bottom, rgba(255,0,0,0.1), rgba(0, 0, 0, 0.1))">
+   
+        <div class="container align-items-center"style="position: relative; z-index: 1;">
+            <div>
+
+                <div class="position-relative">
+                    <img class="img-fluid w-25 rounded-circle" src="./img/OIG.C.jpg" alt="">
+                    <div class="fire-animation position-absolute"></div>
+                </div>
+                
+                <h1><span class="text-danger">Avlon</span></h1>
+                <p>Avlon Bot is an integrated bot that separates you from the rest of the bots and everything you need is in it.</p>
+                <a class="btn btn-danger" href="https://discord.com/oauth2/authorize?client_id=789625316171317348&permissions=8&scope=bot">Invite Bot</a>
+                <a class="m-2 btn btn-light" href="https://discord.gg/Vp3EnQT5EA">Support Server</a>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <!-- Features -->
+
+
+    <section  id="Features" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-4"style="color: white">
+                Features
+            </h2>
+            <div class="row text-center">
+                <div class="col-sm">
+                    <div class="card bg-dark text-light mb-3">
+                        <div class="h1 mt-3">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="card-title text-danger">Easy to Use</h4>
+                            <p class="card-text">Our bot is designed with a user-friendly interface, making it easy for anyone to interact with. 
+                                No technical expertise is required to use it.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card bg-dark text-light mb-3">
+                        <div class="h1 mt-3">
+                            <i class="bi bi-capslock-fill"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="card-title text-danger">24/7 Online</h4>
+                            <p class="card-text">Our bot is always online, ready to assist you at any time of the day or night.
+                                 It’s like having a personal assistant that never sleeps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card bg-dark text-light mb-3">
+                        <div class="h1 mt-3">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="card-title text-danger">Security</h4>
+                            <p class="card-text">Our bot is built with security in mind. It uses advanced encryption and privacy measures to ensure that your data is always protected. 
+                                You can interact with our bot with the confidence that your information is safe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               <div class="row text-center">
+                <div class="col-sm">
+                    <div class="card bg-dark text-light mb-3">
+                        <div class="h1 mt-3">
+                            <i class="bi bi-gear"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="card-title text-danger">Optimization</h4>
+                            <p class="card-text">Our bot is optimized for performance and speed, ensuring a smooth and efficient user experience.
+                                 It’s designed to handle multiple requests simultaneously without slowing down.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card bg-dark text-light mb-3">
+                        <div class="h1 mt-3">
+                            <i class="bi bi-question-circle-fill"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="card-title text-danger">Support</h4>
+                            <p class="card-text">We provide comprehensive support for our bot. 
+                                If you encounter any issues or have any questions, our dedicated support team is just a message away.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card bg-dark text-light mb-3">
+                        <div class="h1 mt-3">
+                            <i class="bi bi-eject"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="card-title text-danger">Functions</h4>
+                            <p class="card-text">Our bot comes with a wide range of functions to meet your needs, from answering queries to setting reminders and much more.
+                                 It’s like having a multi-tool in your pocket.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-screen relative border-t-4 border-amber-602">
+    </section>
+
+
+    <!-- Statics -->
+
+
+    <section id="Statics" class="py-5 bg-dark text-light">
+        <div class="container">
+            <div class="py-2 text-center">
+                <h2>Statics</h2>
+            </div>
+            <div class="row align-items-center justify-content-center text-center -5">
+         
+                <div class="col-sm p-5 h1">
+                    <i class="bi bi-hdd-stack text-danger"></i>
+                    <h5><span id="servers"></span></h5>
+                    <h5>Servers</h5>
+                </div>
+                <div class="col-sm p-5 h1">
+                    <i class="bi bi bi-people-fill text-danger"></i>
+                    <h5><span id="users"></span></h5>
+                    <h5>Users</h5>
+                </div>
+                <div class="col-sm p-5 h1">
+                    <i class="bi bi bi-hash text-danger"></i>
+                    <h5><span id="channels"></span></h5>
+                    <h5>Channels</h5>
+                </div>
+                <div class="col-sm p-5 h1">
+                    <i class="bi bi bi-eye text-danger"></i>
+                    <h5><span id="status"></span> | <div id="statusIndicator" class="status-indicator"></div></h5>
+                    <h5>Status</h5>
+                </div>
+                <div class="col-sm p-5 h1">
+                    <i class="bi bi bi-clock text-danger"></i>
+                    <h5><span id="uptime"></span></h5>
+                    <h5>Uptime</h5>
+                </div>
+                
+            </div>
+
+        </div>
+        
+    </section>
+
+   
+
+
+    <!-- footer -->
+
+    <div class="footer-clean bg-dark" >
+    <footer>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>Quick access</h3>
+                    <ul>
+                        <li><a href="#Features">Features</a></li>
+                        <li><a href="#Statics">Statics</a></li>
+                        <li><a href="#FAQ">Ask me</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="./pages/commands.html">Commands</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">License</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="#">Support server</a></li>
+                        <li><a href="https://discord.com/oauth2/authorize?client_id=789625316171317348&permissions=8&scope=bot">Invite bot</a></li>
+                        <li><a href="#">Github</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 item social text-danger"><a href="#"><ion-icon name="logo-discord"></ion-icon></a><a href="#"><ion-icon name="logo-facebook"></ion-icon></a><a href="#"><ion-icon name="logo-twitter"></ion-icon></a><a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                    <p class="copyright text-white">Avlon Bot © 2022</p>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer font-small text-light mt-5">
+        <div class="footer-copyright text-center"> © 2022 Copyright
+          </div>
+        </div>
+     </footer>
+    </div>
+   </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $.get("http://localhost:3000/servers", function(data){
+        $("#servers").text(data.servers);
+    });
+
+    $.get("http://localhost:3000/users", function(data){
+        $("#users").text(data.users);
+    });
+
+    $.get("http://localhost:3000/channels", function(data){
+        $("#channels").text(data.channels);
+    });
+
+ $.get("http://localhost:3000/status", function(data){
+        const statusIndicator = $('#status');
+        const statusIndicator2 = $('#statusIndicator');
+        statusIndicator.removeClass('online offline maintenance');
+
+        if (data.status === 'online') {
+            statusIndicator.addClass('online');
+            statusIndicator2.addClass('status-online');
+            statusIndicator.text('Online');
+        } else if (data.status === 'maintenance') {
+            statusIndicator.addClass('maintenance');
+            statusIndicator2.addClass('status-maintenance');
+            statusIndicator.text('Maintenance');
+        } else {
+            statusIndicator.addClass('offline');
+            statusIndicator2.addClass('status-offline');
+            statusIndicator.text('Offline');
+        }
+    });
+
+    $.get("http://localhost:3000/uptime", function(data){
+        $("#uptime").text(data.uptime);
+    });
+
+});
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        async function checkLoginStatus() {
+            const response = await fetch('/getProfile');
+            if (response.ok) {
+                const profile = await response.json();
+                
+                // Atualize a imagem do avatar
+                const avatar = document.querySelector('#avatar');
+                avatar.src = `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`;
+    
+                // Se o usuário estiver logado, mostre o dropdown e oculte o botão de login
+                document.querySelector('#profile').style.display = 'block';
+                document.querySelector('#loginButton').style.display = 'none';
+            }
+        }
+    
+        checkLoginStatus();
+    });
+    </script>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>

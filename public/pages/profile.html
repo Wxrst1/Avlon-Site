@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/commands.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="h-screen relative border-t-4 border-amber-600">
+        <div class="container py-5">
+            <div class="row justify-content-start">
+                <div class="col-auto">
+                    <a href="/" class="btn btn-primary">Voltar</a>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="header">
+                        <div class="overlay">
+                            <h3 id="username" class="text-center"></h3>
+                        </div>
+                        <div class="avatar">
+                            <img id="avatar" src="" alt="Avatar do usuário">
+                            <span id="role" class="badge badge-primary">Usuário</span>
+                        </div>
+                        <div class="edit-icon">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                    </div>
+    
+                    <p id="email" class="text-center font-weight-light"></p>
+                    <div class="profile-signature text-uppercase text-center">
+    
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="/logout" class="btn btn-danger">Logout</a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    
+    <div id="edit-profile-card" class="edit-profile-card hidden">
+        <form id="edit-header-form">
+            <label for="header-color">Cor do cabeçalho:</label>
+            <input type="color" id="header-color" name="header-color">
+    
+            <label for="header-image">URL da imagem/GIF do cabeçalho:</label>
+            <input type="url" id="header-image" name="header-image">
+    
+            <!-- Adicione a entrada de arquivo aqui -->
+            <label for="header-file">Ou faça upload de uma imagem/GIF:</label>
+            <input type="file" id="header-file" name="header-file">
+    
+            <input type="submit" value="Salvar alterações">
+        </form>
+    </div>
+    
+    
+    
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const response = await fetch('/getProfile');
+            if (response.ok) {
+                const profile = await response.json();
+                document.querySelector('#username').textContent = profile.username;
+                document.querySelector('#avatar').src = `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`;
+                document.querySelector('#email').textContent = profile.email;
+        
+                // Crie a badge com base nas funções
+                const roleBadge = document.querySelector('#role');
+                roleBadge.textContent = profile.roles[0];  // Use a primeira função como exemplo
+                roleBadge.className = 'badge';
+                if (profile.roles.includes('Owner')) {
+                    roleBadge.classList.add('badge-danger');
+                } else if (profile.roles.includes('Administrator')) {
+                    roleBadge.classList.add('badge-warning');
+                } else if (profile.roles.includes('Moderator')) {
+                    roleBadge.classList.add('badge-info');
+                } else if (profile.roles.includes('Developer')) {
+                    roleBadge.classList.add('badge-success');
+                } else if (profile.roles.includes('Support')) {
+                    roleBadge.classList.add('badge-primary');
+                } else if (profile.roles.includes('Partner')) {
+                    roleBadge.classList.add('badge-secondary');
+                } else {
+                    roleBadge.classList.add('badge-light');
+                }
+            }
+        });
+    </script>
+
+
+    <script>
+document.querySelector('.edit-icon').addEventListener('click', function() {
+    // Mostra o card de edição de perfil quando o ícone de edição é clicado
+    document.getElementById('edit-profile-card').style.display = 'block';
+});
+
+document.getElementById('edit-header-form').addEventListener('submit', function(event) {
+    // Evita o comportamento padrão do formulário
+    event.preventDefault();
+
+    // Obtém os valores dos campos do formulário
+    var headerColor = document.getElementById('header-color').value;
+    var headerImage = document.getElementById('header-image').value;
+    var headerFile = document.getElementById('header-file').files[0];
+
+   // Se um arquivo foi carregado, use isso em vez da URL da imagem
+   if (headerFile) {
+       var reader = new FileReader();
+       reader.onloadend = function() {
+           updateHeader(headerColor, reader.result);
+       }
+       reader.readAsDataURL(headerFile);
+   } else {
+       updateHeader(headerColor, headerImage);
+   }
+
+   // Oculta o card de edição de perfil após salvar as alterações
+   document.getElementById('edit-profile-card').style.display = 'none';
+});
+
+function updateHeader(color, image) {
+    // Atualiza o estilo do cabeçalho
+    var header = document.querySelector('.header');
+    header.style.backgroundColor = color;
+    header.style.backgroundImage = 'url(' + image + ')';
+    header.style.backgroundPosition = 'center'; // Centraliza a imagem de fundo
+}
+
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        async function checkLoginStatus() {
+            const response = await fetch('/getProfile');
+            if (response.ok) {
+                const profile = await response.json();
+                
+                // Atualize a imagem do avatar
+                const avatar = document.querySelector('#avatar');
+                avatar.src = `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`;
+    
+                // Se o usuário estiver logado, mostre o dropdown e oculte o botão de login
+                document.querySelector('#profile').style.display = 'block';
+                document.querySelector('#loginButton').style.display = 'none';
+            }
+        }
+    
+        checkLoginStatus();
+    });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>

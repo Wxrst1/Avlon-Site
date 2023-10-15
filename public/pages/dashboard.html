@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/commands.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+
+
+    <title>Aris Bot</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="h-screen relative border-t-4 border-amber-600">
+    <div class="navbar navbar-expand-md bg-dark navbar-dark">
+        <div class="container">
+            <a href="../index.html" class="navbar-brand text-danger">Avlon Bot</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu"><span
+                    class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="mainmenu">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="linksdrop" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Links</a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="linksdrop">
+                            <li><a class="dropdown-item text-muted" href="">Invite</a></li>
+                            <li><a class="dropdown-item text-muted" href="">Github</a></li>
+                            <li><a class="dropdown-item text-muted" href="">Support Server</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                 <li class="nav-item dropdown" id="profile" style="display: none;">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="avatar" src="" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%;">
+                    </a>
+                    <ul class="dropdown-menu bg-dark" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item text-muted" href="/dashboard">Dashboard</a></li>
+                        <li><a class="dropdown-item text-muted" href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+
+              
+            <a href="/login" class="btn btn-outline-danger" id="loginButton">Login</a>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Servidores</h2>
+    <div id="servers"></div>
+    <div id="user"></div>
+        <!-- footer -->
+
+        <div class="footer-clean bg-dark" >
+            <footer>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>Quick access</h3>
+                            <ul>
+                                <li><a href="#Features">Features</a></li>
+                                <li><a href="#Statics">Statics</a></li>
+                                <li><a href="#FAQ">Ask me</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>About</h3>
+                            <ul>
+                                <li><a href="./pages/commands.html">Commands</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">License</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-md-3 item">
+                            <h3>Links</h3>
+                            <ul>
+                                <li><a href="#">Support server</a></li>
+                                <li><a href="https://discord.com/oauth2/authorize?client_id=789625316171317348&permissions=8&scope=bot">Invite bot</a></li>
+                                <li><a href="#">Github</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 item social text-danger"><a href="#"><ion-icon name="logo-discord"></ion-icon></a><a href="#"><ion-icon name="logo-facebook"></ion-icon></a><a href="#"><ion-icon name="logo-twitter"></ion-icon></a><a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                            <p class="copyright text-white">Avlon Bot © 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-footer font-small text-light mt-5">
+                <div class="footer-copyright text-center"> © 2022 Copyright
+                  </div>
+                </div>
+             </footer>
+            </div>
+    </div>
+    
+ 
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="/fontawesome/all.min.js"></script>
+    <script src="/js/animation.js"></script>
+
+
+    <script>
+         document.addEventListener('DOMContentLoaded', (event) => {
+        fetch('/dashboard')
+            .then(response => response.json())
+            .then(servers => {
+                const serversDiv = document.getElementById('servers');
+                servers.forEach(guild => {
+                    const div = document.createElement('div');
+                    const img = document.createElement('img');
+                    img.src = guild.icon;
+                    img.alt = `${guild.name} Icon`;
+                    div.appendChild(img);
+                    const p = document.createElement('p');
+                    p.textContent = `${guild.name} (ID: ${guild.id})`;
+                    div.appendChild(p);
+                    const a = document.createElement('a');
+                    a.href = `/dashboard/${guild.id}`;
+                    a.textContent = 'Dashboard';
+                    div.appendChild(a);
+                    serversDiv.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Erro ao obter servidores:', error));
+        });
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        async function checkLoginStatus() {
+            const response = await fetch('/getProfile');
+            if (response.ok) {
+                const profile = await response.json();
+                
+                // Atualize a imagem do avatar
+                const avatar = document.querySelector('#avatar');
+                avatar.src = `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`;
+    
+                // Se o usuário estiver logado, mostre o dropdown e oculte o botão de login
+                document.querySelector('#profile').style.display = 'block';
+                document.querySelector('#loginButton').style.display = 'none';
+            }
+        }
+    
+        checkLoginStatus();
+    });
+    </script>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
