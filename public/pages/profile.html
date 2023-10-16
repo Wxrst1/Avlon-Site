@@ -69,7 +69,7 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            const response = await fetch('/getProfile');
+            const response = await fetch('http://localhost:3000/getProfile');
             if (response.ok) {
                 const profile = await response.json();
                 document.querySelector('#username').textContent = profile.username;
@@ -143,7 +143,7 @@ function updateHeader(color, image) {
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         async function checkLoginStatus() {
-            const response = await fetch('/getProfile');
+            const response = await fetch('http://localhost:3000/getProfile');
             if (response.ok) {
                 const profile = await response.json();
                 

@@ -197,7 +197,7 @@
     </script>
 
 <script>
-    fetch('/commands')
+    fetch('http://localhost:3000/commands')
       .then(response => response.json())
       .then(data => {
         let categoryIndex = 0;
