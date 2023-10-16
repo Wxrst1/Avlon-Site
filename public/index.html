@@ -267,19 +267,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    $.get("http://localhost:3000/servers", function(data){
+    $.get("https://avlon-site.vercel.app/servers", function(data){
         $("#servers").text(data.servers);
     });
 
-    $.get("http://localhost:3000/users", function(data){
+    $.get("https://avlon-site.vercel.app/users", function(data){
         $("#users").text(data.users);
     });
 
-    $.get("http://localhost:3000/channels", function(data){
+    $.get("https://avlon-site.vercel.app/channels", function(data){
         $("#channels").text(data.channels);
     });
 
- $.get("http://localhost:3000/status", function(data){
+ $.get("https://avlon-site.vercel.app/status", function(data){
         const statusIndicator = $('#status');
         const statusIndicator2 = $('#statusIndicator');
         statusIndicator.removeClass('online offline maintenance');
@@ -299,7 +299,7 @@ $(document).ready(function(){
         }
     });
 
-    $.get("http://localhost:3000/uptime", function(data){
+    $.get("https://avlon-site.vercel.app/uptime", function(data){
         $("#uptime").text(data.uptime);
     });
 
