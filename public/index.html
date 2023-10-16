@@ -57,7 +57,7 @@
                 </li>
 
            
-            <a href="http://localhost:3000/login" class="btn btn-outline-danger" id="loginButton">Login</a>
+            <a href="/login" class="btn btn-outline-danger" id="loginButton">Login</a>
             </div>
         </div>
     </div>
@@ -267,19 +267,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    $.get("http://localhost:3000/servers", function(data){
+    // Faça solicitações para a API do servidor
+    $.get("https://avlon-bot-production.up.railway.app/api/all-data", function(data){
+        // Atualize os elementos HTML com os dados obtidos
         $("#servers").text(data.servers);
-    });
-
-    $.get("http://localhost:3000/users", function(data){
         $("#users").text(data.users);
-    });
-
-    $.get("http://localhost:3000/channels", function(data){
         $("#channels").text(data.channels);
-    });
 
- $.get("http://localhost:3000/status", function(data){
         const statusIndicator = $('#status');
         const statusIndicator2 = $('#statusIndicator');
         statusIndicator.removeClass('online offline maintenance');
@@ -297,19 +291,34 @@ $(document).ready(function(){
             statusIndicator2.addClass('status-offline');
             statusIndicator.text('Offline');
         }
-    });
 
-    $.get("http://localhost:3000/uptime", function(data){
         $("#uptime").text(data.uptime);
     });
-
 });
 </script>
 
 <script>
+    
+    fetch('https://avlon-bot-production.up.railway.app/api/all-data')
+  .then(response => response.json())
+  .then(data => {
+    // Use os dados recebidos do bot
+    console.log(data.servers);
+    console.log(data.users);
+    console.log(data.channels);
+    console.log(data.uptime);
+    console.log(data.status);
+    console.log(data.commands);
+    // E assim por diante para outros dados
+  })
+  .catch(error => {
+    // Lidar com erros, se houver algum
+    console.error(error);
+  });
+
     document.addEventListener('DOMContentLoaded', (event) => {
         async function checkLoginStatus() {
-            const response = await fetch('http://localhost:3000/getProfile');
+            const response = await fetch('/getProfile');
             if (response.ok) {
                 const profile = await response.json();
                 
@@ -325,7 +334,7 @@ $(document).ready(function(){
     
         checkLoginStatus();
     });
-    </script>
+</script>
 
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
