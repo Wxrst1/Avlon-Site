@@ -267,19 +267,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    $.get("http://localhost:3000/servers", function(data){
+    $.get("https://test-host.railway.internal/servers", function(data){
         $("#servers").text(data.servers);
     });
 
-    $.get("http://localhost:3000/users", function(data){
+    $.get("https://test-host.railway.internal/users", function(data){
         $("#users").text(data.users);
     });
 
-    $.get("http://localhost:3000/channels", function(data){
+    $.get("https://test-host.railway.internal/channels", function(data){
         $("#channels").text(data.channels);
     });
 
- $.get("http://localhost:3000/status", function(data){
+ $.get("https://test-host.railway.internal/status", function(data){
         const statusIndicator = $('#status');
         const statusIndicator2 = $('#statusIndicator');
         statusIndicator.removeClass('online offline maintenance');
@@ -299,7 +299,7 @@ $(document).ready(function(){
         }
     });
 
-    $.get("http://localhost:3000/uptime", function(data){
+    $.get("https://test-host.railway.internal/uptime", function(data){
         $("#uptime").text(data.uptime);
     });
 
@@ -309,7 +309,7 @@ $(document).ready(function(){
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         async function checkLoginStatus() {
-            const response = await fetch('/getProfile');
+            const response = await fetch('https://test-host.railway.internal/getProfile');
             if (response.ok) {
                 const profile = await response.json();
                 
