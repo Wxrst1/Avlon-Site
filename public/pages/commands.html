@@ -61,7 +61,7 @@
                     </a>
                     <ul class="dropdown-menu bg-dark" aria-labelledby="profileDropdown">
                        <!--<li><a class="dropdown-item text-muted" href="./pages/dashboard.html">Dashboard</a></li>-->
-                        <li><a class="dropdown-item text-muted" href="https://avlon-site.vercel.app/logout">Logout</a></li>
+                        <li><a class="dropdown-item text-muted" href="https://avlonbot-2.railway.internal/logout">Logout</a></li>
                     </ul>
                 </li>
 
@@ -195,7 +195,7 @@
     </script>
 
 <script>
-    fetch('https://avlon-site.vercel.app/commands')
+    fetch('https://avlonbot-2.railway.internal/commands')
       .then(response => response.json())
       .then(data => {
         let categoryIndex = 0;
@@ -250,7 +250,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         async function checkLoginStatus() {
-            const response = await fetch('https://avlon-site.vercel.app/getProfile');
+            const response = await fetch('https://avlonbot-2.railway.internal/getProfile');
             if (response.ok) {
                 const profile = await response.json();
                 
