@@ -268,7 +268,7 @@
 <script src="https://unpkg.com/axios@0.27.2/dist/axios.min.js"></script>
 <script>
 $(document).ready(function(){
-    axios.get('https://avlonbot-2.railway.internal/servers')
+    axios.get('https://avlonbot-2-production.up.railway.app/servers')
                 .then(response => {
                     $("#servers").text(response.data.servers);
                 })
