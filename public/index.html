@@ -265,7 +265,7 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+<script src="https://unpkg.com/axios@0.27.2/dist/axios.min.js"></script>
 <script>
 $(document).ready(function(){
     axios.get('https://avlonbot-2.railway.internal/servers')
@@ -276,13 +276,22 @@ $(document).ready(function(){
                     console.error(error);
                 });
 
-    $.get("https://avlonbot-2.railway.internal/users", function(data){
-        $("#users").text(data.users);
-    });
-
-    $.get("https://avlonbot-2.railway.internal/channels", function(data){
-        $("#channels").text(data.channels);
-    });
+            // 2. Usuários
+            axios.get('https://avlonbot-2.railway.internal/users')
+                .then(response => {
+                    $("#users").text(response.data.users);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+          // 3. Canais
+          axios.get('https://avlonbot-2.railway.internal/channels')
+                .then(response => {
+                    $("#channels").text(response.data.channels);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
 
  $.get("https://avlonbot-2.railway.internal/status", function(data){
         const statusIndicator = $('#status');
@@ -304,9 +313,14 @@ $(document).ready(function(){
         }
     });
 
-    $.get("https://avlonbot-2.railway.internal/uptime", function(data){
-        $("#uptime").text(data.uptime);
-    });
+   // 4. Uptime
+   axios.get('https://avlonbot-2.railway.internal/uptime')
+                .then(response => {
+                    $("#uptime").text(response.data.uptime);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
 
 });
 
