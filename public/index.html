@@ -268,9 +268,13 @@
 
 <script>
 $(document).ready(function(){
-    $.get("https://avlonbot-2.railway.internal/servers", function(data){
-        $("#servers").text(data.servers);
-    });
+    axios.get('https://avlonbot-2.railway.internal/servers')
+                .then(response => {
+                    $("#servers").text(response.data.servers);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
 
     $.get("https://avlonbot-2.railway.internal/users", function(data){
         $("#users").text(data.users);
