@@ -268,19 +268,19 @@
 
 <script>
 $(document).ready(function(){
-    $.get("https://avlon-site.vercel.app/servers", function(data){
+    $.get("https://avlonbot-2.railway.internal/servers", function(data){
         $("#servers").text(data.servers);
     });
 
-    $.get("https://avlon-site.vercel.app/users", function(data){
+    $.get("https://avlonbot-2.railway.internal/users", function(data){
         $("#users").text(data.users);
     });
 
-    $.get("https://avlon-site.vercel.app/channels", function(data){
+    $.get("https://avlonbot-2.railway.internal/channels", function(data){
         $("#channels").text(data.channels);
     });
 
- $.get("https://avlon-site.vercel.app/status", function(data){
+ $.get("https://avlonbot-2.railway.internal/status", function(data){
         const statusIndicator = $('#status');
         const statusIndicator2 = $('#statusIndicator');
         statusIndicator.removeClass('online offline maintenance');
