@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-    axios.get('https://avlonbot-2.railway.internal/servers')
+    axios.get('https://avlon.up.railway.app/servers')
                 .then(response => {
                     $("#servers").text(response.data.servers);
                 })
@@ -9,7 +9,7 @@ $(document).ready(function(){
                 });
 
             // 2. Usuários
-            axios.get('https://avlonbot-2.railway.internal/users')
+            axios.get('https://avlon.up.railway.app/users')
                 .then(response => {
                     $("#users").text(response.data.users);
                 })
@@ -17,7 +17,7 @@ $(document).ready(function(){
                     console.error(error);
                 });
           // 3. Canais
-          axios.get('https://avlonbot-2.railway.internal/channels')
+          axios.get('https://avlon.up.railway.app/channels')
                 .then(response => {
                     $("#channels").text(response.data.channels);
                 })
@@ -25,7 +25,7 @@ $(document).ready(function(){
                     console.error(error);
                 });
 
- $.get("https://avlonbot-2.railway.internal/status", function(data){
+ $.get("https://avlon.up.railway.app/status", function(data){
         const statusIndicator = $('#status');
         const statusIndicator2 = $('#statusIndicator');
         statusIndicator.removeClass('online offline maintenance');
@@ -46,7 +46,7 @@ $(document).ready(function(){
     });
 
    // 4. Uptime
-   axios.get('https://avlonbot-2.railway.internal/uptime')
+   axios.get('https://avlon.up.railway.app/uptime')
                 .then(response => {
                     $("#uptime").text(response.data.uptime);
                 })
@@ -64,7 +64,7 @@ const checkButtonExists = setInterval(() => {
 
     logoutButton.addEventListener('click', () => {
       // Faça a requisição POST para a API de logout
-      axios.post('https://avlonbot-2.railway.internal/logout', {
+      axios.post('https://avlon.up.railway.app/logout', {
         method: 'POST',
       })
         .then(() => {
@@ -86,7 +86,7 @@ const checkButtonExists = setInterval(() => {
 
     document.addEventListener('DOMContentLoaded', (event) => {
         async function checkLoginStatus() {
-            const response = await fetch('https://avlonbot-2.railway.internal/getProfile');
+            const response = await fetch('https://avlon.up.railway.app/getProfile');
             if (response.ok) {
                 const profile = await response.json();
                 
