@@ -113,18 +113,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
-const xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://avlon.up.railway.app');
-xhr.setRequestHeader('Origin', 'https://avlon-site.vercel.app');
-xhr.onload = function() {
-  if (xhr.status === 200) {
-    const data = JSON.parse(xhr.responseText);
-    console.log(data);
-  } else {
-    console.error('Erro:', xhr.statusText);
-  }
-};
-xhr.onerror = function() {
-  console.error('Erro CORS');
-};
-xhr.send();
+
