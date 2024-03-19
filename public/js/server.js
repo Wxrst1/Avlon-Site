@@ -7,7 +7,7 @@ function handleApiError(error) {
 // Function to update server count
 async function updateServerCount() {
   try {
-    const response = await axios.get('http://localhost:8034/servers');
+    const response = await axios.get('https://avlonbot-2.railway.internal/servers');
     $("#servers").text(response.data.servers);
   } catch (error) {
     handleApiError(error);
@@ -16,7 +16,7 @@ async function updateServerCount() {
 
 async function updateUserCount() {
   try {
-    const response = await axios.get('http://localhost:8034/users');
+    const response = await axios.get('https://avlonbot-2.railway.internal/users');
     $("#users").text(response.data.users);
   } catch (error) {
     handleApiError(error);
@@ -25,7 +25,7 @@ async function updateUserCount() {
 
 async function updateChannelCount() {
   try {
-    const response = await axios.get('http://localhost:8034/channels');
+    const response = await axios.get('https://avlonbot-2.railway.internal/channels');
     $("#channels").text(response.data.channels);
   } catch (error) {
     handleApiError(error);
@@ -34,7 +34,7 @@ async function updateChannelCount() {
 
 async function updateUptime() {
   try {
-    const response = await axios.get('http://localhost:8034/uptime');
+    const response = await axios.get('https://avlonbot-2.railway.internal/uptime');
     $("#uptime").text(response.data.uptime);
   } catch (error) {
     handleApiError(error);
@@ -45,7 +45,7 @@ async function updateUptime() {
 // Function to update bot status
 async function updateStatus() {
   try {
-    const response = await $.get("http://localhost:8034/status");
+    const response = await $.get("https://avlonbot-2.railway.internal/status");
     const statusIndicator = $('#status');
     const statusIndicator2 = $('#statusIndicator');
     statusIndicator.removeClass('online offline maintenance');
@@ -76,7 +76,7 @@ function handleLogout() {
 // Function to check login status (assuming you already have this)
 async function checkLoginStatus() {
   try {
-    const response = await fetch('http://localhost:8034/getProfile');
+    const response = await fetch('https://avlonbot-2.railway.internal/getProfile');
     if (response.ok) {
       const profile = await response.json();
       
